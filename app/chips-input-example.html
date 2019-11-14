@@ -1,0 +1,45 @@
+<mat-form-field class="example-chip-list">
+  <mat-chip-list  #chipList aria-label="selection"
+                  class="mat-chip-list-stacked"
+                  aria-orientation="horizontal">
+    <mat-chip *ngFor="let fund of funds; let i = index">
+      <div>
+        <mat-selection-list>
+          <mat-list-option  [value]="fund.value"
+                            [selected] = "fund.selected"
+                            (click)="checkFund(fund,i)"
+                            [title]="fund.label">
+                            {{ fund.label }}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      <!--(change)="checkCancel($event.checked,$event,fund,i)"-->
+        <div>
+              <mat-checkbox id="{{i}}_check" [disabled]="!fund.selected" 
+              (change)="checkCancel($event,i)"
+                            name="cancel"
+                            color="primary">
+                            <span class="mat-checkbox-label"
+                                  style="color: black; font-weight: bold;">
+                                  Cancel
+                            </span>
+              </mat-checkbox>
+        </div>
+        <div>
+          <!--<mat-form-field >-->
+            <mat-label >Cancel</mat-label>
+            <!--<mat-select id="{{i}}_list">
+                        <mat-option *ngFor="let type of cancels" 
+                                    [value]="type.value"
+                                    (click)="getOption(type, fund, $event)">
+                                    {{type.value}} - {{type.name}}
+                        </mat-option>
+            </mat-select>-->
+            <select id="{{i}}_list" [disabled]="true" [value]='selected'>
+                <option *ngFor="let type of cancels" >{{type.value}} - {{type.name}}</option>
+            </select>  
+          <!--</mat-form-field>-->
+        </div>
+    </mat-chip>
+  </mat-chip-list>
+</mat-form-field>
