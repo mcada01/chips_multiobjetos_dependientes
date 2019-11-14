@@ -1,0 +1,11 @@
+.example-chip-list {
+  width: 100%;
+}
+
+.readonly-wrapper {
+    cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+    pointer-events: none;
+}
